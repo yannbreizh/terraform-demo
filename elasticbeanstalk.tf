@@ -16,7 +16,7 @@ resource "aws_security_group" "app-prod" {
       protocol = "-1"
       cidr_blocks = ["0.0.0.0/0"]
   }
-  tags {
+  tags = {
     Name = "app-prod"
   }
 }
@@ -125,7 +125,7 @@ resource "aws_elastic_beanstalk_environment" "app-prod" {
   setting {
     namespace = "aws:elasticbeanstalk:application:environment"
     name = "RDS_DATABASE"
-    value = "mydb"
+    #value = "mydb"
     value = "${aws_db_instance.rds-app-prod.name}"
   }
   setting {

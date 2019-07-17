@@ -3,7 +3,7 @@ resource "aws_security_group" "rds-app-prod" {
   vpc_id = "${aws_vpc.main.id}"
   name = "rds-app-prod"
   description = "Allow inbound mysql traffic"
-  tags {
+  tags = {
     Name = "rds-app-prod"
   }
 }
@@ -39,7 +39,7 @@ resource "aws_db_instance" "rds-app-prod" {
   vpc_security_group_ids = ["${aws_security_group.rds-app-prod.id}"]
   storage_type         = "gp2"
   backup_retention_period = 30
-  tags {
+  tags = {
       Name = "rds-appprod"
   }
 }
